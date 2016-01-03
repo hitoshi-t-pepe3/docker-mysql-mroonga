@@ -93,7 +93,8 @@ EOSQL
       echo
     done
 
-    if ! kill -s TERM "$pid" || ! wait "$pid"; then
+    # if ! kill -s TERM "$pid" || ! wait "$pid"; then
+    if ! /etc/init.d/mysqld restart || ! wait "$pid"; then
       echo >&2 'MySQL init process failed.'
       exit 1
     fi
